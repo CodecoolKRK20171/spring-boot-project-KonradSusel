@@ -34,4 +34,14 @@ public class CustomerController {
         Customer customer = getCustomerById(customerId);
         cR.deleteCustomerWithEntityManager(customer);
     }
+
+    @PutMapping(path = "")
+    public Customer updateCustomer(@RequestBody Customer updatedCustomer) {
+        Customer oldCustomer = cR.getCustomerByIdWithEntityManager(updatedCustomer.getId());
+        oldCustomer.setFirstName(updatedCustomer.getFirstName());
+        oldCustomer.setLastName(updatedCustomer.getLastName());
+        cR.insertWithEntityManager(oldCustomer);
+        return oldCustomer;
+    }
+
 }
