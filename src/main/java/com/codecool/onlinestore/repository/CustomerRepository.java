@@ -21,8 +21,17 @@ public class CustomerRepository {
 
     @Transactional
     public List<Customer> getAllCustomers() {
-
         return this.entityManager.createQuery("FROM Customer", Customer.class).getResultList();
     }
 
+
+    public Customer getCustomerByIdWithEntityManager(int customerId) {
+        //this method searches for primarykey customerId
+        return this.entityManager.find(Customer.class, customerId);
+    }
+
+    @Transactional
+    public void deleteCustomerWithEntityManager(Customer customer) {
+        entityManager.remove(customer);
+    }
 }
