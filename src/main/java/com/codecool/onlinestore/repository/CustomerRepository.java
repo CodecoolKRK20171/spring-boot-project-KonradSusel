@@ -29,4 +29,9 @@ public class CustomerRepository {
         //this method searches for primarykey customerId
         return this.entityManager.find(Customer.class, customerId);
     }
+
+    @Transactional
+    public void deleteCustomerWithEntityManager(Customer customer) {
+        entityManager.remove(customer);
+    }
 }
