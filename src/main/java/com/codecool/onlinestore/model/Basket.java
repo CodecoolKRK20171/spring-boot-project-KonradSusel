@@ -1,7 +1,5 @@
 package com.codecool.onlinestore.model;
 
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -9,8 +7,7 @@ import java.util.List;
 public class Basket {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "basket_Sequence")
-    @SequenceGenerator(name = "basket_Sequence", sequenceName = "basket_SEQ")
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name")
