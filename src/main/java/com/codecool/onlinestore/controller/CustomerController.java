@@ -23,4 +23,9 @@ public class CustomerController {
     public List<Customer> customers() {
         return cR.getAllCustomers();
     }
+
+    @GetMapping(path = "/get/{id}")
+    public Customer getCustomerById(@PathVariable(value = "id") int customerId) {
+        return cR.getCustomerByIdWithEntityManager(customerId);
+    }
 }
