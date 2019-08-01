@@ -17,14 +17,16 @@ public class Customer {
         @NotBlank
         private String lastName;
 
-
-
         public String getFirstName() {
             return firstName;
         }
 
         public String getLastName() {
             return lastName;
+        }
+
+        public int getId() {
+                return id;
         }
 }
 
