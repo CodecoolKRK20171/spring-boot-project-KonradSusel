@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Repository
 public class CustomerRepository {
@@ -16,6 +17,12 @@ public class CustomerRepository {
     @Transactional
     public void insertWithEntityManager(Customer customer) {
         this.entityManager.persist(customer);
+    }
+
+    @Transactional
+    public List<Customer> getAllCustomers() {
+
+        return this.entityManager.createQuery("FROM Customer", Customer.class).getResultList();
     }
 
 }
