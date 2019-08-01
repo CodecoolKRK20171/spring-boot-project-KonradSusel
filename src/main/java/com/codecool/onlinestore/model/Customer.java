@@ -28,5 +28,13 @@ public class Customer {
         public int getId() {
                 return id;
         }
+
+        public void setFirstName(String firstName) {
+                this.firstName = firstName;
+        }
+
+        public void setLastName(String lastName) {
+                this.lastName = lastName;
+        }
 }
 
