@@ -14,12 +14,12 @@ public class CustomerController {
     @Autowired
     private CustomerRepository cR;
 
-    @PostMapping(path = "")
+    @PostMapping
     public void addCustomer(@RequestBody Customer customer) {
         cR.insertWithEntityManager(customer);
     }
 
-    @GetMapping(path = "")
+    @GetMapping
     public List<Customer> customers() {
         return cR.getAllCustomers();
     }
@@ -35,7 +35,7 @@ public class CustomerController {
         cR.deleteCustomerWithEntityManager(customer);
     }
 
-    @PutMapping(path = "")
+    @PutMapping
     public Customer updateCustomer(@RequestBody Customer updatedCustomer) {
         Customer oldCustomer = cR.getCustomerByIdWithEntityManager(updatedCustomer.getId());
         oldCustomer.setFirstName(updatedCustomer.getFirstName());
