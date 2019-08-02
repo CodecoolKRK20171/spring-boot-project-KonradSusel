@@ -16,8 +16,7 @@ public class Customer {
         @NotBlank
         private String lastName;
 
-        @OneToMany(mappedBy="customer", cascade = CascadeType.ALL) //orphanRemoval = true)
-        //@JoinColumn(name="order_id")
+        @OneToMany(mappedBy="customer", cascade = CascadeType.ALL)
         private Set<Order> orders;
 
         public String getFirstName() {
