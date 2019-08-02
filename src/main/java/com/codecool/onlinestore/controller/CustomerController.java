@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/customer")
+@RequestMapping(path = "/customers")
 public class CustomerController {
 
     @Autowired
@@ -20,8 +20,8 @@ public class CustomerController {
     }
 
     @GetMapping
-    public List<Customer> customers() {
-        return cR.getAllCustomers();
+    public List<Customer> getAllCustomers() {
+        return cR.getAllCustomersWithEntityManager();
     }
 
     @GetMapping(path = "/{id}")
