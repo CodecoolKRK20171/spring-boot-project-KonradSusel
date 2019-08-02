@@ -24,4 +24,13 @@ public class OrderRepository {
         return this.entityManager.createQuery("FROM Order", Order.class).getResultList();
     }
 
+    public Order getOrderByIdWithEntityManager(int orderId) {
+        return this.entityManager.find(Order.class, orderId);
+    }
+
+    @Transactional
+    public void deleteOrderWithEntityManager(Order order) {
+        entityManager.remove(order);
+    }
+
 }
