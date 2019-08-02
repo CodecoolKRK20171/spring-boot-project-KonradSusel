@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Repository
 public class OrderRepository {
@@ -16,6 +17,20 @@ public class OrderRepository {
     @Transactional
     public void insertWithEntityManager(Order order) {
         this.entityManager.persist(order);
+    }
+
+    @Transactional
+    public List<Order> getAllOrders() {
+        return this.entityManager.createQuery("FROM Order", Order.class).getResultList();
+    }
+
+    public Order getOrderByIdWithEntityManager(int orderId) {
+        return this.entityManager.find(Order.class, orderId);
+    }
+
+    @Transactional
+    public void deleteOrderWithEntityManager(Order order) {
+        entityManager.remove(order);
     }
 
 }
