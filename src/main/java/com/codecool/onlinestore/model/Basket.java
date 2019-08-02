@@ -1,5 +1,7 @@
 package com.codecool.onlinestore.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -13,16 +15,16 @@ public class Basket {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER,
-            mappedBy = "basket")
-    private List<Product> Products;
+    @OneToMany(mappedBy = "basket",fetch = FetchType.LAZY)
+//    @JoinColumn(name="prodcut_id")
+//    @Transient
+    @JsonIgnore
+    List<Product> products;
 
     public Basket() { }
 
-    public Basket(String name, List<Product> products) {
+    public Basket(String name) {
         this.name = name;
-        Products = products;
     }
 
     public Long getId() {
@@ -42,10 +44,10 @@ public class Basket {
     }
 
     public List<Product> getProducts() {
-        return Products;
+        return products;
     }
 
     public void setProducts(List<Product> products) {
-        Products = products;
+        this.products = products;
     }
 }
