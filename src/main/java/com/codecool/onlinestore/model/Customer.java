@@ -1,12 +1,11 @@
 package com.codecool.onlinestore.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.Set;
 
 @Entity
+@Table(name = "customers")
 public class Customer {
 
         @Id
@@ -16,6 +15,10 @@ public class Customer {
         private String firstName;
         @NotBlank
         private String lastName;
+
+        @OneToMany(mappedBy="customer", cascade = CascadeType.ALL) //orphanRemoval = true)
+        //@JoinColumn(name="order_id")
+        private Set<Order> orders;
 
         public String getFirstName() {
             return firstName;
