@@ -5,6 +5,8 @@ import com.codecool.onlinestore.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "/order")
 public class OrderController {
@@ -17,4 +19,8 @@ public class OrderController {
         oR.insertWithEntityManager(order);
     }
 
+    @GetMapping
+    public List<Order> getAllOrders() {
+        return oR.getAllOrders();
+    }
 }
