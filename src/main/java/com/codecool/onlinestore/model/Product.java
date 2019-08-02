@@ -4,7 +4,9 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
+@Table(name = "products")
 public class Product {
+//    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,9 +21,9 @@ public class Product {
     @Column(name = "price")
     private BigDecimal price;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "basket_id")
-    private Basket basket;
+    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "basket_id")
+    Basket basket;
 
     public Product() {
     }
