@@ -16,8 +16,6 @@ public class Basket {
     private String name;
 
     @OneToMany(mappedBy = "basket",fetch = FetchType.LAZY)
-//    @JoinColumn(name="prodcut_id")
-//    @Transient
     @JsonIgnore
     List<Product> products;
 

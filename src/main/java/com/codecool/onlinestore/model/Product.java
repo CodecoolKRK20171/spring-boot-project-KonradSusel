@@ -6,7 +6,6 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "products")
 public class Product {
-//    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +21,6 @@ public class Product {
     private BigDecimal price;
 
     @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "basket_id")
     Basket basket;
 
     public Product() {
